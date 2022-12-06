@@ -43,6 +43,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Prop_Barrier_Long_01
       objectReference: {fileID: 0}
+    - target: {fileID: 1251467192584636, guid: aba887719f07fd5479fa6418efa4fd7e, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     - target: {fileID: 4574185477010950, guid: aba887719f07fd5479fa6418efa4fd7e, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -122,6 +126,10 @@ PrefabInstance:
     - target: {fileID: 1090662257128980, guid: fea05091ba5f3f84786932dfdddc3b23, type: 3}
       propertyPath: m_Name
       value: SM_Prop_Barrier_Concrete_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1090662257128980, guid: fea05091ba5f3f84786932dfdddc3b23, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
       objectReference: {fileID: 0}
     - target: {fileID: 4212790277426508, guid: fea05091ba5f3f84786932dfdddc3b23, type: 3}
       propertyPath: m_RootOrder
