@@ -3,56 +3,112 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
 {
-    private float currentPlayerSpeed = 1f;
-    private float addPlayerSpeed = 0.1f;
-    private float waitTime = 3f;
-    private float jumpForce = 10f;
-    private float laneChangeDistance = 10f;
-    private Rigidbody rb;
+    [SerializeField] private float[] lanePositions;
+    [SerializeField] private float laneChangeSpeed;
+    [SerializeField] private float startPlayerSpeed;
+    [SerializeField] private float addPlayerSpeed;
+    [SerializeField] private float jumpForce;
+    [SerializeField] private float jumpTimer;
+    [SerializeField] private float gravity;
 
-    void Start()
+    private float currentPlayerSpeed;
+    private CharacterController controller;
+    private float verticalVelocity;
+    private bool isGrounded = true;
+    private float floorHeight;
+    private float currentJumpTimer;
+
+    private int currentLane = 1;
+    private float currentLanePosition;
+    private float targetLanePosition;
+
+    private void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        controller = GetComponent<CharacterController>();
+        currentPlayerSpeed = startPlayerSpeed;
+        currentLanePosition = lanePositions[currentLane];
+        targetLanePosition = currentLanePosition;
+        floorHeight = transform.position.y;
     }
 
-
-    // Update is called once per frame
-    void FixedUpdate()
+    private void Update()
     {
-        StartCoroutine(AddPlayerSpeedOverTime(waitTime));
         PlayerLeftAndRight();
-    }
+        PlayerJump();
 
-    private IEnumerator AddPlayerSpeedOverTime(float waitTime)
-    {
-        while (true)
+        currentPlayerSpeed += addPlayerSpeed * Time.deltaTime;
+        
+        if (!isGrounded)
         {
-            yield return new WaitForSeconds(waitTime);
-            currentPlayerSpeed += addPlayerSpeed;
+            verticalVelocity -= gravity * Time.deltaTime;
+        }
+
+        if (currentJumpTimer > 0)
+        {
+            currentJumpTimer -= Time.deltaTime;
+        }
+        else
+        {
+            currentJumpTimer = 0;
+        }
+
+        if (transform.position.y <= floorHeight + 0.1f && !isGrounded && currentJumpTimer <= 0)
+        {
+            isGrounded = true;
+            verticalVelocity = 0;
+        }
+
+        controller.Move(new Vector3(-currentPlayerSpeed, verticalVelocity, 0) * Time.deltaTime);
+
+        if (Math.Abs(currentLanePosition - targetLanePosition) > 0.01f)
+        {
+            currentLanePosition = Mathf.Lerp(currentLanePosition, targetLanePosition, laneChangeSpeed * Time.deltaTime);
+            transform.position = new Vector3(transform.position.x, transform.position.y, currentLanePosition);
         }
     }
 
     private void PlayerJump()
     {
-        if (Input.GetKeyDown("space"))
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
-            Debug.Log("The player jumped");
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            verticalVelocity = jumpForce;
+            isGrounded = false;
+            currentJumpTimer = jumpTimer;
         }
     }
 
     private void PlayerLeftAndRight()
     {
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKeyDown(KeyCode.D))
         {
-            transform.position += Vector3.right * laneChangeDistance;
+            PlayerRight();
         }
-        if (Input.GetKey(KeyCode.A))
+        else if (Input.GetKeyDown(KeyCode.A))
         {
-            transform.position += Vector3.left * laneChangeDistance;
+            PlayerLeft();
         }
+    }
 
+    private void PlayerLeft()
+    {
+        currentLane--;
+        if (currentLane < 0)
+        {
+            currentLane = 0;
+        }
+        targetLanePosition = lanePositions[currentLane];
+    }
+
+    private void PlayerRight()
+    {
+        currentLane++;
+        if (currentLane > lanePositions.Length - 1)
+        {
+            currentLane = lanePositions.Length - 1;
+        }
+        targetLanePosition = lanePositions[currentLane];
     }
 }
