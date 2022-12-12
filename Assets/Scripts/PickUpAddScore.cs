@@ -5,14 +5,14 @@ using UnityEngine;
 
 public class PickUpAddScore : MonoBehaviour
 {
-    public int currentScore;
     public int addScoreAmount = 1;
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.CompareTag("PickUp"))
+        if (other.gameObject.CompareTag("Player"))
         {
-            currentScore += addScoreAmount;
+            Debug.Log(("Player picked up a score pickup"));
+            Destroy(gameObject);
         }
     }
 }
