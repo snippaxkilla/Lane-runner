@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2792870848949102280}
   m_Layer: 0
   m_Name: TruckObstacle
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27,6 +27,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 127.72, y: 0.39, z: 6.83}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8671939492295315296}
   - {fileID: 6030649496075734030}
@@ -115,11 +116,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1057618358218468, guid: 1f098958311da814eb80bf0a6c359aa9, type: 3}
   m_PrefabInstance: {fileID: 6026225159045068532}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &6030649496075734030 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4600465217862394, guid: 1f098958311da814eb80bf0a6c359aa9, type: 3}
-  m_PrefabInstance: {fileID: 6026225159045068532}
-  m_PrefabAsset: {fileID: 0}
 --- !u!65 &1860659312909660069
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -133,6 +129,11 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.0835047, y: 2.6403735, z: 10.738967}
   m_Center: {x: -0.037784547, y: 2.5585299, z: -2.2659154}
+--- !u!4 &6030649496075734030 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4600465217862394, guid: 1f098958311da814eb80bf0a6c359aa9, type: 3}
+  m_PrefabInstance: {fileID: 6026225159045068532}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8671672793064743116
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -199,11 +200,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1473424408486266, guid: 84ad6a939ba4f1d478bdfd186e259b05, type: 3}
   m_PrefabInstance: {fileID: 8671672793064743116}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &8671939492295315296 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4243497498095532, guid: 84ad6a939ba4f1d478bdfd186e259b05, type: 3}
-  m_PrefabInstance: {fileID: 8671672793064743116}
-  m_PrefabAsset: {fileID: 0}
 --- !u!65 &9065263107603296981
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -217,3 +213,8 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.102881, y: -1.8, z: 9.393894}
   m_Center: {x: -0.00000014431181, y: 1.33, z: -0.6987747}
+--- !u!4 &8671939492295315296 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4243497498095532, guid: 84ad6a939ba4f1d478bdfd186e259b05, type: 3}
+  m_PrefabInstance: {fileID: 8671672793064743116}
+  m_PrefabAsset: {fileID: 0}

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: -655657108393237647}
   m_Layer: 0
   m_Name: PlasticObstacles
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27,6 +27,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 145.26807, y: 0, z: 7.145}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1958200992649856641}
   - {fileID: 1804591938327404957}
@@ -115,11 +116,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1769424475871970, guid: be76150b03ca11e4fad5f8f7c51fad30, type: 3}
   m_PrefabInstance: {fileID: 1802955795101989813}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &1804591938327404957 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4029095000201768, guid: be76150b03ca11e4fad5f8f7c51fad30, type: 3}
-  m_PrefabInstance: {fileID: 1802955795101989813}
-  m_PrefabAsset: {fileID: 0}
 --- !u!65 &7974934782012917401
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -133,6 +129,11 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.654335, y: 1.0181274, z: 1.8003442}
   m_Center: {x: 0, y: 0.5090637, z: 0.24503434}
+--- !u!4 &1804591938327404957 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4029095000201768, guid: be76150b03ca11e4fad5f8f7c51fad30, type: 3}
+  m_PrefabInstance: {fileID: 1802955795101989813}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1955416190955900605
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -199,11 +200,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1335658347330562, guid: 731e09a80f921ea4881d591d9b9d37d1, type: 3}
   m_PrefabInstance: {fileID: 1955416190955900605}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &1958200992649856641 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4474771208079420, guid: 731e09a80f921ea4881d591d9b9d37d1, type: 3}
-  m_PrefabInstance: {fileID: 1955416190955900605}
-  m_PrefabAsset: {fileID: 0}
 --- !u!65 &5217713379315709502
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -217,3 +213,8 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.654335, y: 1.0181274, z: 1.8003442}
   m_Center: {x: 0, y: 0.5090637, z: 0.24503434}
+--- !u!4 &1958200992649856641 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4474771208079420, guid: 731e09a80f921ea4881d591d9b9d37d1, type: 3}
+  m_PrefabInstance: {fileID: 1955416190955900605}
+  m_PrefabAsset: {fileID: 0}

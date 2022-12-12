@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 342984804687186180}
   - component: {fileID: 355353465792694452}
   - component: {fileID: 3293142286427424086}
-  - component: {fileID: 3575304177187659915}
   - component: {fileID: 4547885209146313363}
   m_Layer: 0
   m_Name: Collectible
@@ -99,20 +98,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.107041016, y: 0.32, z: 0.3064161}
   m_Center: {x: 0, y: -0.01, z: -0.000000037252903}
---- !u!114 &3575304177187659915
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 341148232824059214}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 753a30666699d8948b3a2e374b68791a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentScore: 0
-  addScoreAmount: 1
 --- !u!54 &4547885209146313363
 Rigidbody:
   m_ObjectHideFlags: 0
