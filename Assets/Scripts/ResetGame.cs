@@ -1,13 +1,12 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ResetGame : MonoBehaviour
 {
     private void ResetGameForPlayer()
     {
+        WaitTimeResetGame();
         Debug.Log("Game has been reset");
-        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -16,5 +15,11 @@ public class ResetGame : MonoBehaviour
         {
             ResetGameForPlayer();
         }
+    }
+
+    static IEnumerator WaitTimeResetGame()
+    {
+        yield return new WaitForSeconds(3);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
     }
 }

@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class PlayerScore : MonoBehaviour
 {
-    [SerializeField] private int currentScore = 0;
     [SerializeField] private int addScoreAmount = 1;
+    
+    private int currentScore;
+
+    public int CurrentScore => currentScore;
 
     private void OnTriggerEnter(Collider other)
     {

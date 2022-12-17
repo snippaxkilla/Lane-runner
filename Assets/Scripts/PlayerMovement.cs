@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
@@ -70,7 +68,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void PlayerJump()
+    public void PlayerJump()
     {
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
@@ -92,7 +90,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void PlayerLeft()
+    public void PlayerLeft()
     {
         currentLane--;
         if (currentLane < 0)
@@ -102,7 +100,7 @@ public class PlayerMovement : MonoBehaviour
         targetLanePosition = lanePositions[currentLane];
     }
 
-    private void PlayerRight()
+    public void PlayerRight()
     {
         currentLane++;
         if (currentLane > lanePositions.Length - 1)

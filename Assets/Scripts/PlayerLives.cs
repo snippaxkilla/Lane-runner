@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerLives : MonoBehaviour
@@ -7,7 +5,15 @@ public class PlayerLives : MonoBehaviour
     [SerializeField] private int currentLives = 3;
     [SerializeField] private int deductLive = 1;
 
-    void LoseLife()
+    public bool IsDead;
+    public int CurrentLives => currentLives;
+
+    private void Start()
+    {
+        IsDead = false;
+    }
+
+    public void LoseLife()
     {
         if (currentLives > 0)
         {
@@ -15,12 +21,18 @@ public class PlayerLives : MonoBehaviour
         }
         else
         {
-            UnityEngine.SceneManagement.SceneManager.LoadScene(0);
-            Debug.Log("Game Over");
+           PlayerDeath();
         }
     }
 
-    void OnTriggerEnter(Collider other)
+    private void PlayerDeath()
+    {
+        IsDead = true;
+        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+        Debug.Log("Game Over");
+    }
+
+    private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Obstacle"))
         {
