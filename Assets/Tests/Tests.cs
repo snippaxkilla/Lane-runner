@@ -1,4 +1,5 @@
 using System.Collections;
+
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -10,9 +11,8 @@ public class Tests
     public IEnumerator CanPlayerDieTest()
     {
         SceneManager.LoadScene(0);
-        yield return new WaitForSeconds(3.25f);
+        yield return new WaitForSeconds(15f);
 
-        var player = Object.FindObjectOfType<PlayerMovement>();
         var playerLives = Object.FindObjectOfType<PlayerLives>();
 
         playerLives.LoseLife();
@@ -39,7 +39,7 @@ public class Tests
 
         yield return new WaitForSeconds(1f);
 
-        if (player.transform.position.x < 0)
+        if (player.transform.position.z < -1.457f)
         {
             Assert.Pass();
         }
@@ -61,7 +61,7 @@ public class Tests
 
         yield return new WaitForSeconds(1f);
 
-        if (player.transform.position.x > 3f)
+        if (player.transform.position.z > -1.457f)
         {
             Assert.Pass();
         }
@@ -83,7 +83,7 @@ public class Tests
 
         yield return new WaitForSeconds(0.25f);
 
-        if (player.transform.position.y > -4.8)
+        if (player.transform.position.y > 0)
         {
             Assert.Pass();
         }
@@ -125,9 +125,7 @@ public class Tests
         var player = Object.FindObjectOfType<PlayerMovement>();
         var playerHealth = Object.FindObjectOfType<PlayerLives>();
 
-        player.PlayerLeft();
-
-        yield return new WaitForSeconds(3.5f);
+        yield return new WaitForSeconds(5f);
 
         if (playerHealth.CurrentLives < 3)
         {
@@ -148,109 +146,35 @@ public class Tests
         var player = Object.FindObjectOfType<PlayerMovement>();
         var playerScore = Object.FindObjectOfType<PlayerScore>();
 
-        yield return new WaitForSeconds(2.3f);
+        yield return new WaitForSeconds(1.5f);
         player.PlayerRight();
         Debug.Log("Player moved right 1");
 
-
-        yield return new WaitForSeconds(1.83f);
-        player.PlayerLeft();
-        Debug.Log("Player moved left 1");
-
-
-        yield return new WaitForSeconds(1.825f);
+        yield return new WaitForSeconds(3.5f);
         player.PlayerRight();
         Debug.Log("Player moved right 2");
 
-
-        yield return new WaitForSeconds(1.935f);
-        player.PlayerLeft();
-        Debug.Log("Player moved left 2");
-
-
-        yield return new WaitForSeconds(1.764f);
+        yield return new WaitForSeconds(3f);
         player.PlayerLeft();
         Debug.Log("Player moved left 3");
 
-
-        yield return new WaitForSeconds(6.493f);
-        player.PlayerRight();
-        Debug.Log("Player moved right 3");
-
-
-        yield return new WaitForSeconds(0.339f);
+        yield return new WaitForSeconds(0.35f);
         player.PlayerRight();
         Debug.Log("Player moved right 4");
 
-
-        yield return new WaitForSeconds(0.954f);
-        player.PlayerLeft();
-        Debug.Log("Player moved left 4");
-
-
-        yield return new WaitForSeconds(8.385f);
-        player.PlayerRight();
-        Debug.Log("Player moved right 5");
-
-
-        yield return new WaitForSeconds(0.704f);
+        yield return new WaitForSeconds(6f);
         player.PlayerLeft();
         Debug.Log("Player moved left 5");
 
-
-        yield return new WaitForSeconds(0.369f);
+        yield return new WaitForSeconds(8.5f);
         player.PlayerLeft();
         Debug.Log("Player moved left 6");
 
-
-        yield return new WaitForSeconds(1.048f);
-        player.PlayerRight();
-        Debug.Log("Player moved right 6");
-
-
-        yield return new WaitForSeconds(0.313f);
+        yield return new WaitForSeconds(3f);
         player.PlayerRight();
         Debug.Log("Player moved right 7");
 
-
-        yield return new WaitForSeconds(1.362f);
-        player.PlayerLeft();
-        Debug.Log("Player moved left 7");
-
-
-        yield return new WaitForSeconds(0.973f);
-        player.PlayerLeft();
-        Debug.Log("Player moved left 8");
-
-
-        yield return new WaitForSeconds(1.607f);
-        player.PlayerRight();
-        Debug.Log("Player moved right 8");
-
-
-        yield return new WaitForSeconds(1.787f);
-        player.PlayerRight();
-        Debug.Log("Player moved right 9");
-
-
-        yield return new WaitForSeconds(4.43f);
-        player.PlayerLeft();
-        Debug.Log("Player moved left 9");
-
-
-        yield return new WaitForSeconds(0.757f);
-        player.PlayerLeft();
-        Debug.Log("Player moved left 10");
-
-
-        yield return new WaitForSeconds(0.792f);
-        player.PlayerRight();
-        Debug.Log("Player moved right 10");
-
-
-
-
-        yield return new WaitForSeconds(3.5f);
+        yield return new WaitForSeconds(5f);
 
         if (playerScore.CurrentScore > 0)
         {

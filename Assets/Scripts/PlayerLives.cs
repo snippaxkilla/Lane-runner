@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerLives : MonoBehaviour
@@ -28,7 +30,7 @@ public class PlayerLives : MonoBehaviour
     private void PlayerDeath()
     {
         IsDead = true;
-        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+        WaitTimeResetGame();
         Debug.Log("Game Over");
     }
 
@@ -40,5 +42,11 @@ public class PlayerLives : MonoBehaviour
             Destroy(other.gameObject);
             LoseLife();
         }
+    }
+
+    IEnumerator WaitTimeResetGame()
+    {
+        yield return new WaitForSeconds(3);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
     }
 }
