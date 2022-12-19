@@ -34,7 +34,7 @@ public class PlayerLives : MonoBehaviour
     private void PlayerDeath()
     {
         IsDead = true;
-        Debug.Log("Game Over");
+        //Debug.Log("Game Over");
         UnityEngine.SceneManagement.SceneManager.LoadScene(0);
     }
 
@@ -42,7 +42,7 @@ public class PlayerLives : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Obstacle"))
         {
-            Debug.Log(("Player hit an obstacle"));
+            //Debug.Log(("Player hit an obstacle"));
             livesText.text = "Lives " + currentLives;
             Destroy(other.gameObject);
             LoseLife();

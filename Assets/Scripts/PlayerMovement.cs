@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
@@ -22,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
     private int currentLane = 1;
     private float currentLanePosition;
     private float targetLanePosition;
+    private bool gameStarted = false;
 
     private void Start()
     {
@@ -30,15 +32,26 @@ public class PlayerMovement : MonoBehaviour
         currentLanePosition = lanePositions[currentLane];
         targetLanePosition = currentLanePosition;
         floorHeight = transform.position.y;
+
+        StartCoroutine(PlayerWaitTime());
     }
 
     private void Update()
     {
+        if (!gameStarted)
+        {
+            return;
+        }
+        
         PlayerLeftAndRight();
         PlayerJump();
+        PlayerSpeed();
+    }
 
+    public void PlayerSpeed()
+    {
         currentPlayerSpeed += addPlayerSpeed * Time.deltaTime;
-        
+
         if (!isGrounded)
         {
             verticalVelocity -= gravity * Time.deltaTime;
@@ -108,5 +121,12 @@ public class PlayerMovement : MonoBehaviour
             currentLane = lanePositions.Length - 1;
         }
         targetLanePosition = lanePositions[currentLane];
+    }
+
+    private IEnumerator PlayerWaitTime()
+    {
+        yield return new WaitForSeconds(3);
+        
+        gameStarted = true;
     }
 }
