@@ -15,14 +15,14 @@ public class PlayerScore : MonoBehaviour
     void Start()
     {
         currentScore = 0;
-        scoreText.text = "Score : " + currentScore;
+        scoreText.text = "Score " + currentScore;
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("PickUp"))
         {
-            Debug.Log(("Player picked up a score pickup"));
+            //Debug.Log(("Player picked up a score pickup"));
             currentScore += addScoreAmount;
             Destroy(other.gameObject);
             scoreText.text = "Score " + currentScore;

@@ -6,7 +6,7 @@ public class ResetGame : MonoBehaviour
     private void ResetGameForPlayer()
     {
         WaitTimeResetGame();
-        Debug.Log("Game has been reset");
+        //Debug.Log("Game has been reset");
     }
 
     private void OnTriggerEnter(Collider other)
