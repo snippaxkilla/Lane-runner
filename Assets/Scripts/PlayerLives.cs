@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerLives : MonoBehaviour
 {
@@ -9,10 +10,13 @@ public class PlayerLives : MonoBehaviour
 
     public bool IsDead;
     public int CurrentLives => currentLives;
+    public Text livesText;
 
     private void Start()
     {
         IsDead = false;
+        currentLives = 3;
+        livesText.text = "Lives " + currentLives;
     }
 
     public void LoseLife()
@@ -30,8 +34,8 @@ public class PlayerLives : MonoBehaviour
     private void PlayerDeath()
     {
         IsDead = true;
-        WaitTimeResetGame();
         Debug.Log("Game Over");
+        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -39,14 +43,9 @@ public class PlayerLives : MonoBehaviour
         if (other.gameObject.CompareTag("Obstacle"))
         {
             Debug.Log(("Player hit an obstacle"));
+            livesText.text = "Lives " + currentLives;
             Destroy(other.gameObject);
             LoseLife();
         }
-    }
-
-    IEnumerator WaitTimeResetGame()
-    {
-        yield return new WaitForSeconds(3);
-        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
     }
 }
